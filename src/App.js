@@ -1,23 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [inputValue, setInputValue] = useState('');
+  const [labelValue, setLabelValue] = useState('');
+  const [selectValue, setSelectValue] = useState('');
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleLabelChange = (e) => {
+    setLabelValue(e.target.value);
+  };
+
+  const handleSelectChange = (e) => {
+    setSelectValue(e.target.value);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form>
+        <label>
+          Input:
+          <input type="text" value={inputValue} onChange={handleInputChange} />
+        </label>
+      </form>
+
+      <form>
+        <label>
+          Label:
+          <input type="text" value={labelValue} onChange={handleLabelChange} />
+        </label>
+      </form>
+
+      <form>
+        <label>
+          Select:
+          <select value={selectValue} onChange={handleSelectChange}>
+            <option value="Web Design">Web Design</option>
+            <option value="Web Programming">Web Programming</option>
+            <option value="Web Aja">Web Aja</option>
+          </select>
+        </label>
+      </form>
+
+      <div>
+        <h2>Form Values:</h2>
+        <p>Input: {inputValue}</p>
+        <p>Label: {labelValue}</p>
+        <p>Select: {selectValue}</p>
+      </div>
     </div>
   );
 }
